@@ -1,7 +1,7 @@
 // Service worker : enregistre l'app dans l'iPhone pour qu'elle marche hors ligne.
 // A CHAQUE MISE A JOUR DU CONTENU, augmente ce numero (v1 -> v2 -> v3...).
-const VERSION = 'v4';
-const FICHIERS = ['./', './index.html', './contenu.js', './manifest.json', './icone-180.png', './icone-512.png', './fira-sans.css', './fira-sans-400.woff2', './fira-sans-500.woff2', './fira-sans-600.woff2']
+const VERSION = 'v5';
+const FICHIERS = ['./', './index.html', './contenu.js', './manifest.json', './icone-180.png', './icone-512.png', './martel-sans.css', './martel-sans-400.ttf', './martel-sans-600.ttf', './martel-sans-700.ttf', './martel-sans-800.ttf']
 // Le logo (logo.png) est mis en mémoire automatiquement à la première ouverture.;
 
 self.addEventListener('install', e => {
