@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2B2D40">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AUREP">
+<title>AUREP</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icone-180.png">
+<link rel="stylesheet" href="fira-sans.css">
+<style>
+:root{
+  --nuit:#2B2D40; --ardoise:#404253; --pastille:#898BA8; --fond:#F8F8FF;
+  --encadre:#EBEBF1; --contour:#E2E2EA; --vert:#6BB960; --texte:#2B2D40; --gris:#5C5E70;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--nuit)}
+body{font-family:"Fira Sans",-apple-system,system-ui,sans-serif;color:var(--texte);min-height:100vh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* Bandeau du haut */
+.bandeau{background:var(--nuit);color:#fff;padding:calc(env(safe-area-inset-top) + 18px) 16px 56px}
+.barre{display:flex;justify-content:space-between;align-items:center;min-height:44px}
+.pilule{display:inline-flex;align-items:center;gap:8px;background:var(--ardoise);border-radius:999px;
+  padding:10px 18px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.pilule.cachee{visibility:hidden}
+.point{width:10px;height:10px;border-radius:50%;background:var(--vert)}
+.hors .point{background:#C9A13B}
+.surtitre{margin-top:52px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.06em;color:#DADEEA;text-transform:uppercase}
+.logo{display:block;margin:36px auto -30px;max-height:56px;max-width:60%}
+.mention{text-align:center;font-size:13px;color:#9a9cb0;letter-spacing:.04em;margin-top:18px}
+.titre.petit{font-size:28px}
+.titre{margin-top:14px;text-align:center;font-size:40px;font-weight:500;line-height:1.15}
+.actions{display:flex;justify-content:center;gap:76px;margin-top:40px}
+.action{display:flex;flex-direction:column;align-items:center;gap:14px;font-size:15px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.rond{width:72px;height:72px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.rond svg{width:28px;height:28px;stroke:var(--pastille)}
+
+/* Feuille blanche */
+.feuille{background:var(--fond);border-radius:26px 26px 0 0;margin-top:-28px;padding:24px 16px calc(120px + env(safe-area-inset-bottom));min-height:60vh}
+.section+.section{margin-top:8px;padding-top:24px;border-top:0}
+h2{font-size:26px;font-weight:600;margin:4px 6px 22px}
+.encadre{background:var(--encadre);border-radius:12px;padding:26px 20px;text-align:center;color:var(--gris);font-size:17px;line-height:1.6}
+.carte{display:flex;align-items:center;gap:18px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--contour);
+  border-radius:14px;padding:22px 20px;margin-bottom:14px}
+.carte .pastille{flex:none;width:52px;height:52px;border-radius:50%;background:var(--pastille);display:grid;place-items:center;color:#fff;font-weight:600;font-size:18px}
+.carte .pastille svg{width:24px;height:24px;stroke:#fff}
+.carte .nom{flex:1;font-size:19px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.carte .fleche{flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--contour);display:grid;place-items:center}
+.carte .fleche svg{width:16px;height:16px;stroke:var(--texte)}
+
+/* Lecture */
+.lecture{background:#fff;border:1.5px solid var(--contour);border-radius:14px;padding:22px 20px;font-size:18px;line-height:1.65}
+.lecture p+p{margin-top:14px}
+.suivant{display:flex;gap:12px;margin-top:18px}
+.suivant button{flex:1;background:#fff;border:1.5px solid var(--contour);border-radius:12px;padding:14px;font-weight:500}
+.suivant button:disabled{opacity:.35}
+.recherche{width:100%;font:inherit;font-size:18px;padding:16px 18px;border-radius:12px;border:1.5px solid var(--contour);background:#fff;margin-bottom:18px;color:var(--texte)}
+.extrait{display:block;font-size:14px;color:var(--gris);margin-top:4px;white-space:normal}
+mark{background:#E4E4F2;color:inherit;border-radius:3px}
+
+/* Barre du bas */
+.onglets{position:fixed;left:0;right:0;bottom:0;background:var(--fond);border-top:1px solid var(--contour);border-radius:26px 26px 0 0;
+  display:flex;justify-content:space-around;padding:20px 0 calc(20px + env(safe-area-inset-bottom))}
+.onglets svg{width:30px;height:30px;stroke:var(--texte)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<nav class="onglets">
+  <button aria-label="Accueil" onclick="aller('')"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20h-5v-6H9v6H4z"/></svg></button>
+  <button aria-label="Profil"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20h14c0-3.5-3-5.5-7-5.5S5 16.5 5 20z"/></svg></button>
+  <button aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15zM10 21h4M12 3v2"/></svg></button>
+</nav>
+
+<script src="contenu.js"></script>
+<script>
+const ICONES = {
+  graphique:'<path d="M4 20h16M7 16V11M11 16V7M15 16v-4M19 16V9"/>',
+  personne:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/>',
+  puzzle:'<path d="M9 4h4v3a2 2 0 1 0 4 0V4h3v6h-3a2 2 0 1 0 0 4h3v6H4v-6h3a2 2 0 1 0 0-4H4V4z"/>',
+  portefeuille:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M15 12h6M3 9h18"/>',
+  maison:'<path d="M4 10.5 12 4l8 6.5V20H4z"/><circle cx="12" cy="14" r="2"/>',
+  groupe:'<circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M4 20v-6a4 4 0 0 1 8 0v6M12 20v-6a4 4 0 0 1 8 0v6"/>',
+  livre:'<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/>',
+  etoile:'<path d="m12 4 2.4 5 5.6.6-4.2 3.8 1.2 5.6L12 16.2 7 19l1.2-5.6L4 9.6 9.6 9z"/>',
+};
+const svg = (d, w=1.8) => `<svg viewBox="0 0 24 24" fill="none" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const FLECHE = svg('<path d="m9 6 6 6-6 6"/>', 2.2);
+const echapper = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function lire(cle){ try{ return JSON.parse(localStorage.getItem(cle)); }catch(e){ return null; } }
+function ecrire(cle,v){ try{ localStorage.setItem(cle, JSON.stringify(v)); }catch(e){} }
+
+function bandeau({retour, surtitre, titre, actions, logo, petit}){
+  const enLigne = navigator.onLine;
+  return `<header class="bandeau">
+    <div class="barre">
+      <button class="pilule" onclick="history.length>1?history.back():aller('')">${svg('<path d="m15 6-6 6 6 6"/>',2.2).replace('<svg','<svg width="14" height="14" stroke="#fff"')} Retour</button>
+      <span class="pilule ${enLigne?'':'hors'}"><span class="point"></span>${enLigne?'En ligne':'Hors ligne'}</span>
+    </div>
+    ${logo ? `<img class="logo" src="${logo}" alt="" onerror="this.remove()">` : ''}
+    <p class="surtitre">${echapper(surtitre)}</p>
+    <h1 class="titre${petit?' petit':''}">${echapper(titre)}</h1>
+    ${actions ? `<div class="actions">
+      <button class="action" onclick="reprendre()"><span class="rond">${svg('<path d="M12 5v14M5 12h14"/>')}</span>Nouveau</button>
+      <button class="action" onclick="aller('recherche')"><span class="rond">${svg('<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>')}</span>Recherche</button>
+    </div>` : ''}
+  </header>`;
+}
+function carte(lien, pastille, nom, extrait=''){
+  return `<button class="carte" onclick="aller('${lien}')"><span class="pastille">${pastille}</span>
+    <span class="nom">${nom}${extrait}</span><span class="fleche">${FLECHE}</span></button>`;
+}
+
+function accueil(){
+  const d = lire('derniere');
+  const derniere = false && d && CHAPITRES[d.c] && CHAPITRES[d.c].pages[d.p]
+    ? carte(`c${d.c}/p${d.p}`, svg(ICONES[CHAPITRES[d.c].icone]||ICONES.livre), echapper(CHAPITRES[d.c].pages[d.p].titre), `<span class="extrait">${echapper(CHAPITRES[d.c].titre)}</span>`)
+    : `<div class="encadre">Vous n'avez pas encore enregistré de calcul pendant cette session. Les calculs sauvegardés apparaîtront à cet emplacement.</div>`;
+  return bandeau({surtitre:APP.surtitre, titre:APP.titre, actions:true, logo:APP.logo}) +
+    `<main class="feuille">
+      <section class="section"><h2>Mes calculs enregistrés</h2>${derniere}</section>
+      <section class="section"><h2>Catégories</h2>
+        ${CHAPITRES.map((c,i)=>carte(c.pages.length===1?`c${i}/p0`:`c${i}`, svg(ICONES[c.icone]||ICONES.livre), echapper(c.titre))).join('')}
+      </section>
+      ${APP.mention ? `<p class="mention">${echapper(APP.mention)}</p>` : ''}</main>`;
+}
+function chapitre(c){
+  const ch = CHAPITRES[c]; if(!ch) return accueil();
+  return bandeau({retour:true, surtitre:`Chapitre ${c+1}`, titre:ch.titre}) +
+    `<main class="feuille"><section class="section"><h2>Pages</h2>
+      ${ch.pages.map((p,i)=>carte(`c${c}/p${i}`, i+1, echapper(p.titre))).join('')}
+    </section></main>`;
+}
+function page(c,p){
+  const ch = CHAPITRES[c], pg = ch && ch.pages[p]; if(!pg) return accueil();
+  ecrire('derniere',{c,p});
+  const paragraphes = pg.texte.split(/\n+/).filter(t=>t.trim()).map(t=>`<p>${echapper(t)}</p>`).join('');
+  return bandeau({retour:true, surtitre:APP.surtitre, titre:pg.titre, petit:true}) +
+    `<main class="feuille"><article class="lecture">${paragraphes}</article>
+      ${ch.pages.length>1 ? `<div class="suivant">
+        <button ${p>0?'':'disabled'} onclick="aller('c${c}/p${p-1}',true)">Précédente</button>
+        <button ${p<ch.pages.length-1?'':'disabled'} onclick="aller('c${c}/p${p+1}',true)">Suivante</button>
+      </div>` : ''}</main>`;
+}
+function recherche(){
+  return bandeau({retour:true, surtitre:APP.titre, titre:'Recherche'}) +
+    `<main class="feuille"><input class="recherche" type="search" placeholder="Mot à chercher" oninput="chercher(this.value)" autofocus>
+     <div id="resultats"></div></main>`;
+}
+function chercher(q){
+  const zone = document.getElementById('resultats'); q = q.trim();
+  if(q.length<2){ zone.innerHTML=''; return; }
+  const bas = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  const nq = bas(q), res = [];
+  CHAPITRES.forEach((ch,c)=>ch.pages.forEach((p,i)=>{
+    const t = bas(p.titre+' '+p.texte), k = t.indexOf(nq);
+    if(k>=0){ const brut=(p.titre+' '+p.texte); const ext=brut.slice(Math.max(0,k-40),k+60);
+      res.push(carte(`c${c}/p${i}`, c+1, echapper(p.titre), `<span class="extrait">${echapper(ch.titre)} · …${echapper(ext)}…</span>`)); }
+  }));
+  zone.innerHTML = res.length ? res.join('') : `<div class="encadre">Aucun résultat pour « ${echapper(q)} ».</div>`;
+}
+
+function aller(route, remplacer){ const h = '#/'+route; remplacer ? location.replace(h) : (location.hash = h); }
+function reprendre(){ const d = lire('derniere'); aller(d ? `c${d.c}/p${d.p}` : 'c0'); }
+function afficher(){
+  const r = location.hash.replace(/^#\/?/,'');
+  let m, html;
+  if(r==='recherche') html = recherche();
+  else if((m = r.match(/^c(\d+)\/p(\d+)$/))) html = page(+m[1], +m[2]);
+  else if((m = r.match(/^c(\d+)$/))) html = chapitre(+m[1]);
+  else html = accueil();
+  document.getElementById('app').innerHTML = html; window.scrollTo(0,0);
+}
+addEventListener('hashchange', afficher);
+addEventListener('online', afficher); addEventListener('offline', afficher);
+afficher();
+
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }
+</script>
+</body>
+</html>
