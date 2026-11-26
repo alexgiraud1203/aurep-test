@@ -23,34 +23,35 @@ body{font-family:"Fira Sans",-apple-system,system-ui,sans-serif;color:var(--text
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* Bandeau du haut */
-.bandeau{background:var(--nuit);color:#fff;padding:calc(env(safe-area-inset-top) + 18px) 16px 56px}
+.bandeau{background:var(--nuit);color:#fff;padding:calc(env(safe-area-inset-top) + 18px) 16px 62px}
 .barre{display:flex;justify-content:space-between;align-items:center;min-height:44px}
-.pilule{display:inline-flex;align-items:center;gap:8px;background:var(--ardoise);border-radius:999px;
-  padding:10px 18px;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.pilule{display:inline-flex;align-items:center;gap:7px;background:var(--ardoise);border-radius:999px;
+  padding:8px 15px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
 .pilule.cachee{visibility:hidden}
-.point{width:10px;height:10px;border-radius:50%;background:var(--vert)}
+.point{width:9px;height:9px;border-radius:50%;background:var(--vert)}
 .hors .point{background:#C9A13B}
-.surtitre{margin-top:52px;text-align:center;font-size:14px;font-weight:600;letter-spacing:.06em;color:#DADEEA;text-transform:uppercase}
+.surtitre{margin-top:40px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.06em;color:#DADEEA;text-transform:uppercase}
 .logo{display:block;margin:36px auto -30px;max-height:56px;max-width:60%}
 .mention{text-align:center;font-size:13px;color:#9a9cb0;letter-spacing:.04em;margin-top:18px}
-.titre.petit{font-size:28px}
-.titre{margin-top:14px;text-align:center;font-size:40px;font-weight:500;line-height:1.15}
-.actions{display:flex;justify-content:center;gap:76px;margin-top:40px}
-.action{display:flex;flex-direction:column;align-items:center;gap:14px;font-size:15px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-.rond{width:72px;height:72px;border-radius:50%;background:#fff;display:grid;place-items:center}
-.rond svg{width:28px;height:28px;stroke:var(--pastille)}
+.titre.petit{font-size:24px}
+.titre{margin-top:8px;text-align:center;font-size:32px;font-weight:500;line-height:1.15}
+.actions{display:flex;justify-content:center;gap:90px;margin-top:42px}
+.action{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.rond{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.rond svg{width:22px;height:22px;stroke:var(--pastille)}
 
 /* Feuille blanche */
-.feuille{background:var(--fond);border-radius:26px 26px 0 0;margin-top:-28px;padding:24px 16px calc(120px + env(safe-area-inset-bottom));min-height:60vh}
-.section+.section{margin-top:8px;padding-top:24px;border-top:0}
-h2{font-size:26px;font-weight:600;margin:4px 6px 22px}
-.encadre{background:var(--encadre);border-radius:12px;padding:26px 20px;text-align:center;color:var(--gris);font-size:17px;line-height:1.6}
-.carte{display:flex;align-items:center;gap:18px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--contour);
-  border-radius:14px;padding:22px 20px;margin-bottom:14px}
-.carte .pastille{flex:none;width:52px;height:52px;border-radius:50%;background:var(--pastille);display:grid;place-items:center;color:#fff;font-weight:600;font-size:18px}
+.feuille{background:var(--fond);border-radius:26px 26px 0 0;margin-top:-28px;padding:14px 16px calc(120px + env(safe-area-inset-bottom));min-height:60vh}
+.feuille.accueil{padding-bottom:0}
+.section+.section{margin:20px -16px 0;padding:14px 16px calc(120px + env(safe-area-inset-bottom));background:#fff;border-radius:26px 26px 0 0;box-shadow:0 -6px 18px rgba(43,45,64,.06)}
+h2{font-size:23px;font-weight:600;margin:0 0 16px}
+.encadre{background:var(--encadre);border-radius:12px;margin:0 4px;padding:20px 22px;text-align:center;color:#4A4C5E;font-size:14px;line-height:1.6}
+.carte{display:flex;align-items:center;gap:20px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--contour);
+  border-radius:14px;padding:15px 16px;margin-bottom:12px}
+.carte .pastille{flex:none;width:50px;height:50px;border-radius:50%;background:var(--pastille);display:grid;place-items:center;color:#fff;font-weight:600;font-size:18px}
 .carte .pastille svg{width:24px;height:24px;stroke:#fff}
-.carte .nom{flex:1;font-size:19px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.carte .fleche{flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--contour);display:grid;place-items:center}
+.carte .nom{flex:1;font-size:17px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.carte .fleche{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--contour);display:grid;place-items:center}
 .carte .fleche svg{width:16px;height:16px;stroke:var(--texte)}
 
 /* Lecture */
@@ -66,7 +67,7 @@ mark{background:#E4E4F2;color:inherit;border-radius:3px}
 /* Barre du bas */
 .onglets{position:fixed;left:0;right:0;bottom:0;background:var(--fond);border-top:1px solid var(--contour);border-radius:26px 26px 0 0;
   display:flex;justify-content:space-around;padding:20px 0 calc(20px + env(safe-area-inset-bottom))}
-.onglets svg{width:30px;height:30px;stroke:var(--texte)}
+.onglets svg{width:25px;height:25px;stroke:var(--texte)}
 </style>
 </head>
 <body>
@@ -123,7 +124,7 @@ function accueil(){
     ? carte(`c${d.c}/p${d.p}`, svg(ICONES[CHAPITRES[d.c].icone]||ICONES.livre), echapper(CHAPITRES[d.c].pages[d.p].titre), `<span class="extrait">${echapper(CHAPITRES[d.c].titre)}</span>`)
     : `<div class="encadre">Vous n'avez pas encore enregistré de calcul pendant cette session. Les calculs sauvegardés apparaîtront à cet emplacement.</div>`;
   return bandeau({surtitre:APP.surtitre, titre:APP.titre, actions:true, logo:APP.logo}) +
-    `<main class="feuille">
+    `<main class="feuille accueil">
       <section class="section"><h2>Mes calculs enregistrés</h2>${derniere}</section>
       <section class="section"><h2>Catégories</h2>
         ${CHAPITRES.map((c,i)=>carte(c.pages.length===1?`c${i}/p0`:`c${i}`, svg(ICONES[c.icone]||ICONES.livre), echapper(c.titre))).join('')}
