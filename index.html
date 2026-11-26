@@ -11,57 +11,62 @@
 <title>AUREP</title>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icone-180.png">
-<link rel="stylesheet" href="fira-sans.css">
+<link rel="stylesheet" href="martel-sans.css">
 <style>
 :root{
-  --nuit:#2B2D40; --ardoise:#404253; --pastille:#898BA8; --fond:#F8F8FF;
-  --encadre:#EBEBF1; --contour:#E2E2EA; --vert:#6BB960; --texte:#2B2D40; --gris:#5C5E70;
+  --nuit:#2B2D42; --pastille:#898BA8; --fond:#F8F8FF;
+  --encadre:#EBEBF1; --contour:#E2E2EA; --vert:#4BBC54; --rouge:#F73816; --texte:#2B2D42; --gris:#4A4C5E;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{background:var(--nuit)}
-body{font-family:"Fira Sans",-apple-system,system-ui,sans-serif;color:var(--texte);min-height:100vh}
+body{font-family:"Martel Sans",-apple-system,system-ui,sans-serif;color:var(--texte);min-height:100vh;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* Bandeau du haut */
-.bandeau{background:var(--nuit);color:#fff;padding:calc(env(safe-area-inset-top) + 18px) 16px 62px}
+.bandeau{background:var(--nuit);color:#fff;padding:calc(env(safe-area-inset-top) + 18px) 15px 64px}
 .barre{display:flex;justify-content:space-between;align-items:center;min-height:44px}
-.pilule{display:inline-flex;align-items:center;gap:7px;background:var(--ardoise);border-radius:999px;
-  padding:8px 15px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.pilule{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border-radius:15px;
+  height:30px;padding:3px 14px 0 12px;font-size:10px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.pilule svg{margin-top:-3px}
 .pilule.cachee{visibility:hidden}
-.point{width:9px;height:9px;border-radius:50%;background:var(--vert)}
-.hors .point{background:#C9A13B}
-.surtitre{margin-top:40px;text-align:center;font-size:12px;font-weight:600;letter-spacing:.06em;color:#DADEEA;text-transform:uppercase}
+.point{width:10px;height:10px;border-radius:50%;background:var(--vert);margin-top:-3px}
+.hors .point{background:var(--rouge)}
+.surtitre{margin-top:38px;text-align:center;font-size:11px;font-weight:800;color:rgba(255,255,255,.8);text-transform:uppercase;line-height:14px}
 .logo{display:block;margin:36px auto -30px;max-height:56px;max-width:60%}
-.mention{text-align:center;font-size:13px;color:#9a9cb0;letter-spacing:.04em;margin-top:18px}
-.titre.petit{font-size:24px}
-.titre{margin-top:8px;text-align:center;font-size:32px;font-weight:500;line-height:1.15}
-.actions{display:flex;justify-content:center;gap:90px;margin-top:42px}
-.action{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.mention{text-align:center;font-size:13px;color:#9a9cb0;margin-top:18px}
+.titre.petit{font-size:22px;line-height:28px}
+.titre{margin-top:12px;text-align:center;font-size:28px;font-weight:700;line-height:34px}
+.actions{display:flex;justify-content:center;gap:91px;margin-top:40px}
+.action{display:flex;flex-direction:column;align-items:center;gap:12px;font-size:11px;font-weight:800;text-transform:uppercase;line-height:14px}
 .rond{width:50px;height:50px;border-radius:50%;background:#fff;display:grid;place-items:center}
-.rond svg{width:22px;height:22px;stroke:var(--pastille)}
+.rond svg{width:20px;height:20px;stroke:var(--pastille)}
 
 /* Feuille blanche */
-.feuille{background:var(--fond);border-radius:26px 26px 0 0;margin-top:-28px;padding:14px 16px calc(120px + env(safe-area-inset-bottom));min-height:60vh}
+.feuille{background:var(--fond);border-radius:26px 26px 0 0;margin-top:-28px;padding:16px 15px calc(120px + env(safe-area-inset-bottom));min-height:60vh}
 .feuille.accueil{padding-bottom:0}
-.section+.section{margin:20px -16px 0;padding:14px 16px calc(120px + env(safe-area-inset-bottom));background:#fff;border-radius:26px 26px 0 0;box-shadow:0 -6px 18px rgba(43,45,64,.06)}
-h2{font-size:23px;font-weight:600;margin:0 0 16px}
-.encadre{background:var(--encadre);border-radius:12px;margin:0 4px;padding:20px 22px;text-align:center;color:#4A4C5E;font-size:14px;line-height:1.6}
-.carte{display:flex;align-items:center;gap:20px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--contour);
-  border-radius:14px;padding:15px 16px;margin-bottom:12px}
-.carte .pastille{flex:none;width:50px;height:50px;border-radius:50%;background:var(--pastille);display:grid;place-items:center;color:#fff;font-weight:600;font-size:18px}
+.section+.section{margin:20px -15px 0;padding:16px 15px calc(120px + env(safe-area-inset-bottom));background:#fff;border-radius:26px 26px 0 0;box-shadow:0 -6px 18px rgba(43,45,66,.06)}
+h2{font-size:20px;font-weight:800;line-height:24px;margin:0 0 18px}
+.section+.section h2{margin-bottom:13px}
+.encadre{background:var(--encadre);border-radius:10px;margin:0 5px;padding:22px 24px 18px;text-align:center;color:var(--gris);font-size:12.5px;line-height:22px}
+.carte{display:flex;align-items:center;gap:20px;width:100%;text-align:left;background:#fff;border:1px solid #D9D9E4;
+  border-radius:10px;padding:15px;margin-bottom:12px}
+.carte .pastille{flex:none;width:50px;height:50px;border-radius:50%;background:var(--pastille);display:grid;place-items:center;color:#fff;font-weight:700;font-size:17px;padding-top:3px}
 .carte .pastille svg{width:24px;height:24px;stroke:#fff}
-.carte .nom{flex:1;font-size:17px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.carte .fleche{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--contour);display:grid;place-items:center}
-.carte .fleche svg{width:16px;height:16px;stroke:var(--texte)}
+.carte .nom{flex:1;min-width:0;font-size:16px;font-weight:700;line-height:20px;padding-top:4px;white-space:nowrap;overflow:hidden}
+.carte .nom .defile{display:inline-block}
+.carte .nom .defile.anime{animation:defile var(--duree,8s) linear infinite}
+@keyframes defile{0%,15%{transform:translateX(0)}85%,100%{transform:translateX(var(--decalage))}}
+.carte .fleche{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid #D9D9E4;display:grid;place-items:center}
+.carte .fleche svg{width:15px;height:15px;stroke:var(--texte)}
 
 /* Lecture */
-.lecture{background:#fff;border:1.5px solid var(--contour);border-radius:14px;padding:22px 20px;font-size:18px;line-height:1.65}
+.lecture{background:#fff;border:1px solid #D9D9E4;border-radius:10px;padding:22px 20px 18px;font-size:16px;line-height:1.65}
 .lecture p+p{margin-top:14px}
 .suivant{display:flex;gap:12px;margin-top:18px}
-.suivant button{flex:1;background:#fff;border:1.5px solid var(--contour);border-radius:12px;padding:14px;font-weight:500}
+.suivant button{flex:1;background:#fff;border:1px solid #D9D9E4;border-radius:10px;padding:14px 14px 11px;font-weight:700}
 .suivant button:disabled{opacity:.35}
-.recherche{width:100%;font:inherit;font-size:18px;padding:16px 18px;border-radius:12px;border:1.5px solid var(--contour);background:#fff;margin-bottom:18px;color:var(--texte)}
-.extrait{display:block;font-size:14px;color:var(--gris);margin-top:4px;white-space:normal}
+.recherche{width:100%;font:inherit;font-size:16px;padding:14px 18px 11px;border-radius:10px;border:1px solid #D9D9E4;background:#fff;margin-bottom:18px;color:var(--texte)}
+.extrait{display:block;font-size:13px;font-weight:400;color:var(--gris);margin-top:4px;white-space:normal}
 mark{background:#E4E4F2;color:inherit;border-radius:3px}
 
 /* Barre du bas */
@@ -82,6 +87,7 @@ mark{background:#E4E4F2;color:inherit;border-radius:3px}
 <script>
 const ICONES = {
   graphique:'<path d="M4 20h16M7 16V11M11 16V7M15 16v-4M19 16V9"/>',
+  courbe:'<path d="M5 20v-5M9 20v-8M13 20v-4M17 20v-7"/><path d="m3 13 5-5 4 3 7-7"/><path d="M15 4h4v4"/>',
   personne:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/>',
   puzzle:'<path d="M9 4h4v3a2 2 0 1 0 4 0V4h3v6h-3a2 2 0 1 0 0 4h3v6H4v-6h3a2 2 0 1 0 0-4H4V4z"/>',
   portefeuille:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M15 12h6M3 9h18"/>',
@@ -115,7 +121,7 @@ function bandeau({retour, surtitre, titre, actions, logo, petit}){
 }
 function carte(lien, pastille, nom, extrait=''){
   return `<button class="carte" onclick="aller('${lien}')"><span class="pastille">${pastille}</span>
-    <span class="nom">${nom}${extrait}</span><span class="fleche">${FLECHE}</span></button>`;
+    <span class="nom"><span class="defile">${nom}</span>${extrait}</span><span class="fleche">${FLECHE}</span></button>`;
 }
 
 function accueil(){
@@ -167,6 +173,14 @@ function chercher(q){
   zone.innerHTML = res.length ? res.join('') : `<div class="encadre">Aucun résultat pour « ${echapper(q)} ».</div>`;
 }
 
+function defiler(){
+  document.querySelectorAll('.carte .nom').forEach(n=>{
+    const t=n.querySelector('.defile'); if(!t) return;
+    const d=t.scrollWidth-n.clientWidth;
+    if(d>2){ t.style.setProperty('--decalage',(-d-8)+'px'); t.style.setProperty('--duree',(4+d/25)+'s'); t.classList.add('anime'); }
+  });
+}
+document.fonts && document.fonts.ready.then(()=>{ document.querySelectorAll('.defile.anime').forEach(t=>t.classList.remove('anime')); defiler(); });
 function aller(route, remplacer){ const h = '#/'+route; remplacer ? location.replace(h) : (location.hash = h); }
 function reprendre(){ const d = lire('derniere'); aller(d ? `c${d.c}/p${d.p}` : 'c0'); }
 function afficher(){
@@ -177,6 +191,7 @@ function afficher(){
   else if((m = r.match(/^c(\d+)$/))) html = chapitre(+m[1]);
   else html = accueil();
   document.getElementById('app').innerHTML = html; window.scrollTo(0,0);
+  requestAnimationFrame(defiler);
 }
 addEventListener('hashchange', afficher);
 addEventListener('online', afficher); addEventListener('offline', afficher);
